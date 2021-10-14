@@ -1,6 +1,72 @@
 {
   "version": 1,
   "projects": {
+    "client-dashboard": {
+      "projectType": "library",
+      "root": "libs/client-dashboard",
+      "sourceRoot": "libs/client-dashboard/src",
+      "prefix": "nx-test",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/client-dashboard"],
+          "options": {
+            "jestConfig": "libs/client-dashboard/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/client-dashboard/src/**/*.ts",
+              "libs/client-dashboard/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
+    "home": {
+      "projectType": "library",
+      "root": "libs/home",
+      "sourceRoot": "libs/home/src",
+      "prefix": "nx-test",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:package",
+          "outputs": ["dist/libs/home"],
+          "options": {
+            "project": "libs/home/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/home/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/home/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/home"],
+          "options": {
+            "jestConfig": "libs/home/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/home/src/**/*.ts",
+              "libs/home/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
     "nx-test": {
       "projectType": "application",
       "root": "apps/nx-test",
@@ -122,6 +188,7 @@
     }
   },
   "cli": {
+    "analytics": false,
     "defaultCollection": "@nrwl/angular",
     "packageManager": "npm"
   },

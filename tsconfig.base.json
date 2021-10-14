@@ -14,7 +14,10 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@libs/home": ["libs/home/src/index.ts"],
+      "@nx-test/client-dashboard": ["libs/client-dashboard/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
